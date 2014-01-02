@@ -8,9 +8,12 @@ namespace TableStorageDemo
         static void Main(string[] args)
         {
             TableStorageManager manager = new TableStorageManager();
-            manager.CreateNewTable("PostingTwit");
-            manager.CreateData("PostingTwit");
-            manager.CreateDataByBatch("PostingTwit");
+            string tableName = "PostingTwit";
+
+            manager.CreateNewTable(tableName);
+            manager.CreateData(tableName);
+            manager.CreateDataByBatch(tableName);
+            manager.RetrieveAll(tableName);
         }
     }
 }

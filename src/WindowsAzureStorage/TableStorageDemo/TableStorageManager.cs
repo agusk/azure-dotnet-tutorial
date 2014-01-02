@@ -81,5 +81,16 @@ namespace TableStorageDemo
 
             Console.WriteLine("Done");
         }
+        public void RetrieveAll(string tableName)
+        {
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableQuery<PostingTwit> query = new TableQuery<PostingTwit>();
+            
+            foreach (PostingTwit entity in table.ExecuteQuery(query))
+            {
+                Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
+                    entity.Email, entity.Posting);
+            }
+        }
     }
 }
