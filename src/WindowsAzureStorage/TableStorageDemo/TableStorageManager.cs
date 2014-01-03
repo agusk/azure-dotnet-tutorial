@@ -1,4 +1,10 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////
+// Copyright 2013 Agus Kurniawan
+// blog: http://blog.aguskurniawan.net
+// email: agusk2007@gmail.com
+//////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -106,6 +112,29 @@ namespace TableStorageDemo
                 Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
                     entity.Email, entity.Posting);
             }
+        }
+        public void UpdateData(string tableName)
+        {
+            // scenario
+            // update data twit where email=user7@email.com
+
+            CloudTable table = tableClient.GetTableReference(tableName);   
+            TableQuery<PostingTwit> query = new TableQuery<PostingTwit>().Where(
+                TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal, "user7@email.com"));
+
+            IEnumerable<PostingTwit> list = table.ExecuteQuery(query);
+            if(list.Count()>0)
+            {
+                Console.Write("Updating data....");
+                PostingTwit entity = list.Single();
+                entity.Posting = "updated content";
+
+                // update data
+                TableOperation insertOperation = TableOperation.InsertOrReplace(entity);
+                table.Execute(insertOperation);
+                Console.WriteLine("Done");
+            }
+
         }
     }
 }
