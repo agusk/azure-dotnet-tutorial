@@ -14,6 +14,7 @@ namespace TableStorageDemo
             manager.CreateData(tableName);
             manager.CreateDataByBatch(tableName);
             manager.RetrieveAll(tableName);
+            manager.RetrievebyCriteria(tableName);
         }
     }
 }

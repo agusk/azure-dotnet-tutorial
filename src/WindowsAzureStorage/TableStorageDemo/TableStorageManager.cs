@@ -74,6 +74,7 @@ namespace TableStorageDemo
                 PostingTwit twit = new PostingTwit();
                 twit.Posting = "Posting " + i;
                 twit.Email = "user" + i + "@email.com";
+                twit.PartitionKey = "twit";
                 
                 TableOperation insertOperation = TableOperation.InsertOrReplace(twit);
                 table.Execute(insertOperation);
@@ -85,7 +86,21 @@ namespace TableStorageDemo
         {
             CloudTable table = tableClient.GetTableReference(tableName);
             TableQuery<PostingTwit> query = new TableQuery<PostingTwit>();
-            
+
+            Console.WriteLine("Retrieving all data....");
+            foreach (PostingTwit entity in table.ExecuteQuery(query))
+            {
+                Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
+                    entity.Email, entity.Posting);
+            }
+        }
+        public void RetrievebyCriteria(string tableName)
+        {
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableQuery<PostingTwit> query = new TableQuery<PostingTwit>().Where(
+                TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal, "user5@email.com"));
+
+            Console.WriteLine("Retrieving data by data....");
             foreach (PostingTwit entity in table.ExecuteQuery(query))
             {
                 Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
