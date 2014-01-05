@@ -22,6 +22,8 @@ namespace TableStorageDemo
             manager.RetrieveAll(tableName);
             manager.RetrievebyCriteria(tableName);
             manager.UpdateData(tableName);
+            manager.DeleteData(tableName);
+            manager.RetrieveAll(tableName);
         }
     }
 }

@@ -7,10 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Configuration;
 
@@ -131,6 +128,28 @@ namespace TableStorageDemo
 
                 // update data
                 TableOperation insertOperation = TableOperation.InsertOrReplace(entity);
+                table.Execute(insertOperation);
+                Console.WriteLine("Done");
+            }
+
+        }
+        public void DeleteData(string tableName)
+        {
+            // scenario
+            // delte data twit where email=user3@email.com
+
+            CloudTable table = tableClient.GetTableReference(tableName);
+            TableQuery<PostingTwit> query = new TableQuery<PostingTwit>().Where(
+                TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal, "user3@email.com"));
+
+            IEnumerable<PostingTwit> list = table.ExecuteQuery(query);
+            if (list.Count() > 0)
+            {
+                Console.Write("Deleting data....");
+                PostingTwit entity = list.Single();
+
+                // delete data
+                TableOperation insertOperation = TableOperation.Delete(entity);
                 table.Execute(insertOperation);
                 Console.WriteLine("Done");
             }
