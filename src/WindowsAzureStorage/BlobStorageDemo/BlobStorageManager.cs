@@ -23,7 +23,7 @@ namespace BlobStorageDemo
             blobClient = storageAccount.CreateCloudBlobClient();
         }
 
-        public void CreateContainer(string containerName)
+        public void CreateContainer(string containerName,bool isPublicStorage)
         {
             try
             {
@@ -32,6 +32,10 @@ namespace BlobStorageDemo
                 if (blobContainer.CreateIfNotExists())
                 {
                     Console.WriteLine("Blob Container " + containerName + " was created");
+                    if(isPublicStorage)
+                    {
+                        blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob }); 
+                    }
                 }
                 else
                 {
@@ -52,10 +56,31 @@ namespace BlobStorageDemo
                 CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
                 Console.Write("Uploading file " + file + " to Azure Blob Storage.....");
                 using (var fileStream = File.OpenRead(file))
-                {
+                {                    
                     blockBlob.UploadFromStream(fileStream);
                 } 
                 Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+        public void GetListofBlob(string containerName)
+        {
+            try
+            {
+                CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
+                foreach (IListBlobItem item in blobContainer.ListBlobs(null, false))
+                {
+                    if (item.GetType() == typeof(CloudBlockBlob))
+                    {
+                        CloudBlockBlob blob = (CloudBlockBlob)item;
+                        Console.WriteLine("Name: " + blob.Name);
+                        Console.WriteLine("Size {0}: {1}", blob.Properties.Length, blob.Uri);
+                        Console.WriteLine("--------------------------------------------------");
+                    }         
+                }
             }
             catch (Exception e)
             {
