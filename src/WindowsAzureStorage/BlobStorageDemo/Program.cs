@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlobStorageDemo
 {
@@ -13,6 +10,7 @@ namespace BlobStorageDemo
             BlobStorageManager blob = new BlobStorageManager();
             string containerName = "myblob";
             blob.CreateContainer(containerName);
+            blob.UploadBlob(containerName, "myfile", "d:/data.xlsx");
         }
     }
 }
