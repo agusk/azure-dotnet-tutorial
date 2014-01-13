@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorageDemo", "Windows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlobStorageDemo", "WindowsAzureStorage\BlobStorageDemo\BlobStorageDemo.csproj", "{BCE8FE6F-F50A-4F05-9FB8-33DB607EAB0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueStorageDemo", "WindowsAzureStorage\QueueStorageDemo\QueueStorageDemo.csproj", "{3D27139B-B082-4551-97FE-747B5E3A7ABC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BCE8FE6F-F50A-4F05-9FB8-33DB607EAB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCE8FE6F-F50A-4F05-9FB8-33DB607EAB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCE8FE6F-F50A-4F05-9FB8-33DB607EAB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D27139B-B082-4551-97FE-747B5E3A7ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D27139B-B082-4551-97FE-747B5E3A7ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D27139B-B082-4551-97FE-747B5E3A7ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D27139B-B082-4551-97FE-747B5E3A7ABC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{10AEC42F-0682-4CD9-92C6-5E8CAB891DBD} = {85B24A29-2372-4E47-9316-5F6162F83AA1}
 		{F055C91C-C955-46FA-A67A-8CE62DC98330} = {318225CE-5186-4326-8977-AA21C217411C}
 		{BCE8FE6F-F50A-4F05-9FB8-33DB607EAB0D} = {318225CE-5186-4326-8977-AA21C217411C}
+		{3D27139B-B082-4551-97FE-747B5E3A7ABC} = {318225CE-5186-4326-8977-AA21C217411C}
 	EndGlobalSection
 EndGlobal
