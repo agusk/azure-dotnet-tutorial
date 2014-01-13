@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
@@ -54,11 +51,26 @@ namespace BlobStorageDemo
             {
                 CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
                 CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
-                Console.Write("Uploading file " + file + " to Azure Blob Storage.....");
-                using (var fileStream = File.OpenRead(file))
+                Console.Write("Uploading file " + file + " to Azure Blob Storage.....");                
+                using (var fs = File.OpenRead(file))
                 {                    
-                    blockBlob.UploadFromStream(fileStream);
+                    blockBlob.UploadFromStream(fs);
                 } 
+                Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+        public void UploadText(string containerName, string blobName, string content)
+        {
+            try
+            {
+                CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
+                CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
+                Console.Write("Uploading text to Azure Blob Storage.....");
+                blockBlob.UploadText(content);               
                 Console.WriteLine("Done");
             }
             catch (Exception e)
@@ -81,6 +93,25 @@ namespace BlobStorageDemo
                         Console.WriteLine("--------------------------------------------------");
                     }         
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+        public void DownloadBlob(string containerName, string blobName, string saveFile)
+        {
+            try
+            {
+                CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
+                CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
+                Console.Write("Downloading file " + blobName + " from Azure Blob Storage.....");
+
+                using (var fs = System.IO.File.OpenWrite(saveFile))
+                {
+                    blockBlob.DownloadToStream(fs);
+                } 
+                Console.WriteLine("Done");
             }
             catch (Exception e)
             {

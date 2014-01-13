@@ -10,7 +10,9 @@ namespace BlobStorageDemo
             BlobStorageManager blob = new BlobStorageManager();
             string containerName = "myblob";
             blob.CreateContainer(containerName,false);
-            blob.UploadBlob(containerName, "myfile", "d:/data.xlsx");
+            blob.UploadBlob(containerName, "data.xlsx", "d:/data.xlsx");
+            blob.UploadText(containerName, "mystring", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");
+            blob.DownloadBlob(containerName, "data.xlsx", "d:/data-temp.xlsx");
             blob.GetListofBlob(containerName);
         }
     }
