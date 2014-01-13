@@ -1,4 +1,10 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////
+// Copyright 2013 Agus Kurniawan
+// blog: http://blog.aguskurniawan.net
+// email: agusk2007@gmail.com
+//////////////////////////////////////////////////////
+
+using System;
 using System.Linq;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -111,6 +117,21 @@ namespace BlobStorageDemo
                 {
                     blockBlob.DownloadToStream(fs);
                 } 
+                Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+        public void DeleteBlob(string containerName, string blobName)
+        {
+            try
+            {
+                CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
+                CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
+                Console.Write("Deleting file " + blobName + " from Azure Blob Storage.....");
+                blockBlob.Delete();
                 Console.WriteLine("Done");
             }
             catch (Exception e)
