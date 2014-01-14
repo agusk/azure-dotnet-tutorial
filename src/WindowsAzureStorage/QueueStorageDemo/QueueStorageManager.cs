@@ -107,5 +107,41 @@ namespace QueueStorageDemo
 
             return msg;
         }
+        public int GetLengthMessage(string queueName)
+        {
+            int total = 0;
+            try
+            {
+                CloudQueue queue = queueClient.GetQueueReference(queueName);
+
+                Console.Write("Deleting queue .....");
+                queue.FetchAttributes();
+                int? count = queue.ApproximateMessageCount;
+                total = (int)count;
+                Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+            return total;
+        }
+        public void DeleteQueue(string queueName)
+        {
+            try
+            {
+                CloudQueue queue = queueClient.GetQueueReference(queueName);
+
+                Console.Write("Deleting queue .....");
+                queue.Delete();
+
+                Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
     }
 }

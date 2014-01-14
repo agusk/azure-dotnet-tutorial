@@ -18,6 +18,8 @@ namespace QueueStorageDemo
 
             queue.CreateNewQueue(queueName);
             queue.CreateNewMessageQueue(queueName, "this is my message");
+            int total = queue.GetLengthMessage(queueName);
+            Console.WriteLine("total message: " + total);
             string message = queue.PeekMessageQueue(queueName);
             Console.WriteLine("message: " + message);
             message = queue.Dequeue(queueName);
