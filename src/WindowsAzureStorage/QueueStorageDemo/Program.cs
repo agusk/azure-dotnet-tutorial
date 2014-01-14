@@ -10,6 +10,11 @@ namespace QueueStorageDemo
     {
         static void Main(string[] args)
         {
+            QueueStorageManager queue = new QueueStorageManager();
+            string queueName = "myqueue";
+
+            queue.CreateNewQueue(queueName);
+            queue.CreateNewMessageQueue(queueName, "this is my message");
         }
     }
 }
