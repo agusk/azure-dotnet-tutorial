@@ -1,4 +1,10 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////
+// Copyright 2013 Agus Kurniawan
+// blog: http://blog.aguskurniawan.net
+// email: agusk2007@gmail.com
+//////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +65,47 @@ namespace QueueStorageDemo
             {
                 Console.WriteLine("Error: " + e.Message);
             }
+        }
+        public string PeekMessageQueue(string queueName)
+        {
+            string msg = "";
+            try
+            {
+                CloudQueue queue = queueClient.GetQueueReference(queueName);
+
+                Console.Write("Getting message queue.....");
+                CloudQueueMessage message = queue.PeekMessage();
+                msg = message.AsString;
+
+                Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+            return msg;
+        }
+        public string Dequeue(string queueName)
+        {
+            string msg = "";
+            try
+            {
+                CloudQueue queue = queueClient.GetQueueReference(queueName);
+
+                Console.Write("Dequeue message .....");
+                CloudQueueMessage message = queue.GetMessage();
+                msg = message.AsString;
+                queue.DeleteMessage(message);
+
+                Console.WriteLine("Done");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+            return msg;
         }
     }
 }
