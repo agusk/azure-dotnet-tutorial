@@ -30,7 +30,7 @@ namespace QueueStorageDemo
             try
             {
                 CloudQueue queue = queueClient.GetQueueReference(queueName);
-
+               
                 if (queue.CreateIfNotExists())
                 {
                     Console.WriteLine("Blob Container " + queueName + " was created");                   

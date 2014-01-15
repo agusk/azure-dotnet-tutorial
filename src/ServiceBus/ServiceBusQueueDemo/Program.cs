@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace ServiceBusQueueDemo
 {
     class Program
     {
         static void Main(string[] args)
         {
+            ServiceBusQueueManager service = new ServiceBusQueueManager();
+            string queueName = "myservicebus";
+
+            service.CreateQueue(queueName);
+            
         }
     }
 }
