@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//////////////////////////////////////////////////////
+// Copyright 2013 Agus Kurniawan
+// blog: http://blog.aguskurniawan.net
+// email: agusk2007@gmail.com
+//////////////////////////////////////////////////////
+
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using System.Configuration;
@@ -23,7 +26,7 @@ namespace ServiceBusQueueDemo
             try
             {
                 var namespaceManager = NamespaceManager.CreateFromConnectionString(cloudString);
-
+                
                 if (!namespaceManager.QueueExists(queueName))
                 {
                     namespaceManager.CreateQueue(queueName);
@@ -37,9 +40,7 @@ namespace ServiceBusQueueDemo
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
-            }
-            
-
+            }            
         }
         public void CreateQueue(string queueName, long maxSizeInMegabytes, TimeSpan messageTimeToLive)
         {
@@ -83,6 +84,41 @@ namespace ServiceBusQueueDemo
                 Console.WriteLine("Error: " + e.Message);
             }
                    
+        }
+        public string ReceiveMessageQueue(string queueName)
+        {
+            string msg = "";
+            try
+            {
+                QueueClient client = QueueClient.CreateFromConnectionString(cloudString, queueName);
+                Console.Write("Receiving message....");
+                BrokeredMessage message = client.Receive();
+                Console.WriteLine("Done");                
+
+                msg = message.GetBody<string>();
+                message.Complete();               
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+            return msg;
+        }
+        public void DeleteQueue(string queueName)
+        {
+            try
+            {
+                var namespaceManager = NamespaceManager.CreateFromConnectionString(cloudString);
+                Console.Write("Deleting queue....");
+                namespaceManager.DeleteQueue(queueName);
+                Console.WriteLine("Done");    
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+
         }
     }
 }
