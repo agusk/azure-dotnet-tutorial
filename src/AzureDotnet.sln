@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLDatabase", "SQLDatabase"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceBus", "ServiceBus", "{85B24A29-2372-4E47-9316-5F6162F83AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "SQLDatabase\HelloWorld\HelloWorld.csproj", "{96E659EC-7A80-4133-9492-56F09DB71D7E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsAzureStorage", "WindowsAzureStorage", "{318225CE-5186-4326-8977-AA21C217411C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorageDemo", "WindowsAzureStorage\TableStorageDemo\TableStorageDemo.csproj", "{F055C91C-C955-46FA-A67A-8CE62DC98330}"
@@ -23,16 +21,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusRelayDemo", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusRelayClient", "ServiceBus\ServiceBusRelayClient\ServiceBusRelayClient.csproj", "{9213D2D2-B8B3-466C-A195-25E42B0C1D1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLAzureDemo", "SQLDatabase\SQLAzureDemo\SQLAzureDemo.csproj", "{31CF9C45-00AA-4C20-8471-7770CEBA2858}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{96E659EC-7A80-4133-9492-56F09DB71D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96E659EC-7A80-4133-9492-56F09DB71D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96E659EC-7A80-4133-9492-56F09DB71D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96E659EC-7A80-4133-9492-56F09DB71D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F055C91C-C955-46FA-A67A-8CE62DC98330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F055C91C-C955-46FA-A67A-8CE62DC98330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F055C91C-C955-46FA-A67A-8CE62DC98330}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,12 +53,16 @@ Global
 		{9213D2D2-B8B3-466C-A195-25E42B0C1D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9213D2D2-B8B3-466C-A195-25E42B0C1D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9213D2D2-B8B3-466C-A195-25E42B0C1D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CF9C45-00AA-4C20-8471-7770CEBA2858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CF9C45-00AA-4C20-8471-7770CEBA2858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CF9C45-00AA-4C20-8471-7770CEBA2858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CF9C45-00AA-4C20-8471-7770CEBA2858}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{96E659EC-7A80-4133-9492-56F09DB71D7E} = {33E6CE32-69E2-4BAA-A55C-925391798198}
+		{31CF9C45-00AA-4C20-8471-7770CEBA2858} = {33E6CE32-69E2-4BAA-A55C-925391798198}
 		{5E089A30-5CD1-4851-9046-DD4CD1E77F18} = {85B24A29-2372-4E47-9316-5F6162F83AA1}
 		{1C617E2D-855F-42C0-B265-04F40497DF36} = {85B24A29-2372-4E47-9316-5F6162F83AA1}
 		{9213D2D2-B8B3-466C-A195-25E42B0C1D1A} = {85B24A29-2372-4E47-9316-5F6162F83AA1}
