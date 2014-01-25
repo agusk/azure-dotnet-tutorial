@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel;
 
 namespace ServiceBusRelayDemo
 {
@@ -10,6 +8,14 @@ namespace ServiceBusRelayDemo
     {
         static void Main(string[] args)
         {
+            ServiceHost service = new ServiceHost(typeof(MyService));
+            service.Open();
+            Console.WriteLine("Service was started.");
+
+            Console.WriteLine("Press ENTER to close");
+            Console.ReadLine();
+
+            service.Close();
         }
     }
 }

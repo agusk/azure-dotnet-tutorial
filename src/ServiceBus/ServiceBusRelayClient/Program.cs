@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel;
 
 namespace ServiceBusRelayClient
 {
@@ -10,6 +8,14 @@ namespace ServiceBusRelayClient
     {
         static void Main(string[] args)
         {
+            var channelFactory = new ChannelFactory<ServiceBusRelayDemo.IMyServiceChannel>("myservice");
+            using (var channel = channelFactory.CreateChannel())
+            {
+                Console.WriteLine("Result: " + channel.Calculate(10,15,5));
+            }
+
+            Console.WriteLine("Press Enter to exit");
+            Console.ReadLine();
         }
     }
 }
