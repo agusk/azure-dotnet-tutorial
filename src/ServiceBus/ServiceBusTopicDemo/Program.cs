@@ -10,6 +10,10 @@ namespace ServiceBusTopicDemo
     {
         static void Main(string[] args)
         {
+            ServiceBusTopicManager service = new ServiceBusTopicManager();
+            string topic = "mytopic";
+
+            service.CreateTopic(topic);
         }
     }
 }
