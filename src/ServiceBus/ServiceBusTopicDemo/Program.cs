@@ -14,6 +14,7 @@ namespace ServiceBusTopicDemo
             string topic = "mytopic";
 
             service.CreateTopic(topic);
+            service.CreateTopic(topic, 5120, new TimeSpan(0,1,0));
         }
     }
 }
