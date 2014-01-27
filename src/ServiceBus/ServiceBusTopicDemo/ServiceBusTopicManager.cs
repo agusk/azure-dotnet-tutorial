@@ -46,7 +46,7 @@ namespace ServiceBusTopicDemo
                 var namespaceManager = NamespaceManager.CreateFromConnectionString(cloudString);
 
                 if (!namespaceManager.TopicExists(topicName))
-                {
+                {                    
                     TopicDescription td = new TopicDescription(topicName);
                     td.MaxSizeInMegabytes = maxMaxSizeInMegabytes;
                     td.DefaultMessageTimeToLive = defaultMessageTimeToLive;
@@ -58,6 +58,43 @@ namespace ServiceBusTopicDemo
                 {
                     Console.WriteLine("topic " + topicName + " has already created");
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+        public void CreateSubscription(string topicName,string subscriptionName)
+        {
+            try
+            {
+                var namespaceManager = NamespaceManager.CreateFromConnectionString(cloudString);
+
+                if (!namespaceManager.SubscriptionExists(topicName, subscriptionName))
+                {
+                    namespaceManager.CreateSubscription(topicName, subscriptionName);
+                    Console.WriteLine("subscription " + subscriptionName + " on topic " + topicName + " was created");
+                }
+                else
+                {
+                    Console.WriteLine("subscription " + subscriptionName + " on topic " + topicName + " has already created");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        public void SendTopic(string topicName, string message)
+        {
+            try
+            {
+                TopicClient client = TopicClient.CreateFromConnectionString(cloudString, topicName);
+                BrokeredMessage msg = new BrokeredMessage(message);
+
+                client.Send(msg);
+                Console.WriteLine("message was sent");
             }
             catch (Exception e)
             {
