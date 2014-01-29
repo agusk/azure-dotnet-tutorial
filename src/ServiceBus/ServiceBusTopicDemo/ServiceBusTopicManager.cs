@@ -101,5 +101,32 @@ namespace ServiceBusTopicDemo
                 Console.WriteLine("Error: " + e.Message);
             }
         }
+
+        public void DeleteTopic(string topicName)
+        {
+            try
+            {
+                var namespaceManager = NamespaceManager.CreateFromConnectionString(cloudString);
+                namespaceManager.DeleteTopic(topicName);
+                Console.WriteLine("topic " + topicName + " was deleted");             
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+        public void DeleteSubscription(string topicName, string subscriptionName)
+        {
+            try
+            {
+                var namespaceManager = NamespaceManager.CreateFromConnectionString(cloudString);
+                namespaceManager.DeleteSubscription(topicName, subscriptionName);
+                Console.WriteLine("subscription " + subscriptionName + " on " + subscriptionName + " was deleted");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
     }
 }
