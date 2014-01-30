@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//////////////////////////////////////////////////////
+// Copyright 2013 Agus Kurniawan
+// blog: http://blog.aguskurniawan.net
+// email: agusk2007@gmail.com
+//////////////////////////////////////////////////////
+
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ServiceBus;
 using System.Threading;
 using Microsoft.ServiceBus.Messaging;
 using System.Configuration;
@@ -19,7 +21,7 @@ namespace ServiceBusTopicSubscriptionSender
             try
             {
                 TopicClient client = TopicClient.CreateFromConnectionString(cloudString, topicName);
-
+                Console.WriteLine("Sending 10 messages...");
                 for(int i=0;i<10;i++)
                 {
                     BrokeredMessage msg = new BrokeredMessage("message " + i.ToString());
@@ -34,6 +36,8 @@ namespace ServiceBusTopicSubscriptionSender
             {
                 Console.WriteLine("Error: " + e.Message);
             }
+            Console.WriteLine("Press Enter to exit");
+            Console.ReadLine();
         }
     }
 }

@@ -7,7 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLDatabase", "SQLDatabase"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceBus", "ServiceBus", "{85B24A29-2372-4E47-9316-5F6162F83AA1}"
 	ProjectSection(SolutionItems) = preProject
-		ServiceBus\README.txt = ServiceBus\README.txt
+		ServiceBus\README.md = ServiceBus\README.md
+		ServiceBus\screendemo.png = ServiceBus\screendemo.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsAzureStorage", "WindowsAzureStorage", "{318225CE-5186-4326-8977-AA21C217411C}"
