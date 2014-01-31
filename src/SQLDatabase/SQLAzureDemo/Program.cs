@@ -10,6 +10,8 @@ namespace SQLAzureDemo
     {
         static void Main(string[] args)
         {
+            SQLAzureManager sqlazure = new SQLAzureManager();
+            sqlazure.TestConnection();
         }
     }
 }
