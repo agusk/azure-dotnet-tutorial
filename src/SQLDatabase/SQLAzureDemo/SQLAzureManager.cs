@@ -86,5 +86,37 @@ namespace SQLAzureDemo
             }
         }
 
+        public void ReadData()
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(sqlConnString);
+                conn.Open();
+                Console.WriteLine("Connected to SQL Azure");
+
+                string query = "select * from dbo.employees";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+                Console.WriteLine("listing data....");
+                while(rd.Read())
+                {
+                    Console.WriteLine("{0} {1}", rd["firstname"], rd["lastname"]);
+                    Console.WriteLine("{0}", rd["email"]);
+                    Console.WriteLine("{0}", rd["country"]);
+                    Console.WriteLine("");
+                }
+                rd.Close();
+                conn.Close();
+                Console.WriteLine("Closed connection");
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
     }
 }
