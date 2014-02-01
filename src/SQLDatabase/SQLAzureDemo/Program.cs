@@ -12,6 +12,7 @@ namespace SQLAzureDemo
         {
             SQLAzureManager sqlazure = new SQLAzureManager();
             sqlazure.TestConnection();
+            sqlazure.CreateData();
         }
     }
 }
