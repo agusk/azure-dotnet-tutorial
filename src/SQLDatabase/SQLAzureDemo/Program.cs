@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQLAzureDemo
 {
@@ -13,6 +10,10 @@ namespace SQLAzureDemo
             SQLAzureManager sqlazure = new SQLAzureManager();
             sqlazure.TestConnection();
             sqlazure.CreateData();
+            sqlazure.ReadData();
+            sqlazure.UpdateData(7); // change this value
+            sqlazure.ReadData();
+            sqlazure.DeleteData(7);
             sqlazure.ReadData();
         }
     }

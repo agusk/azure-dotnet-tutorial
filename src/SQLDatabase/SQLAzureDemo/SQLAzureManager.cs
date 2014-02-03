@@ -118,5 +118,74 @@ namespace SQLAzureDemo
             }
         }
 
+        public void UpdateData(int employeeId)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(sqlConnString);
+                conn.Open();
+                Console.WriteLine("Connected to SQL Azure");
+
+                string query = "update dbo.employees set firstname=@firstname,lastname=@lastname,email=@email,country=@country " +
+                                " where employeeid=@id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlParameter[] pars = new SqlParameter[5];
+
+                pars[0] = new SqlParameter("@firstname", SqlDbType.NVarChar, 10);
+                pars[0].Value = "fname-updt";
+                pars[1] = new SqlParameter("@lastname", SqlDbType.NVarChar, 20);
+                pars[1].Value = "lname-updt";
+                pars[2] = new SqlParameter("@email", SqlDbType.NVarChar, 30);
+                pars[2].Value = "email-updated@myemail.com";
+                pars[3] = new SqlParameter("@country", SqlDbType.NVarChar, 15);
+                pars[3].Value = "country-updated";
+                pars[4] = new SqlParameter("@id", SqlDbType.Int);
+                pars[4].Value = employeeId;
+
+                cmd.Parameters.AddRange(pars);
+                Console.Write("Updating data....");
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Done");
+
+                conn.Close();
+                Console.WriteLine("Closed connection");
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        public void DeleteData(int employeeId)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(sqlConnString);
+                conn.Open();
+                Console.WriteLine("Connected to SQL Azure");
+
+                string query = "delete from dbo.employees where employeeid=@id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlParameter par = new SqlParameter("@id", SqlDbType.Int);
+                par.Value = employeeId;
+
+                cmd.Parameters.Add(par);
+                Console.Write("Deleting data....");
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Done");
+
+                conn.Close();
+                Console.WriteLine("Closed connection");
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
     }
 }
