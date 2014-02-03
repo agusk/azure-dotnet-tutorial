@@ -37,6 +37,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusTopicSubscription
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusTopicSubscriptionSender", "ServiceBus\ServiceBusTopicSubscriptionSender\ServiceBusTopicSubscriptionSender.csproj", "{1E2AC74C-E50E-4CF7-9907-F970FA2E2943}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MediaService", "MediaService", "{CB2AB338-6CA0-4655-BAE4-06D88B914A13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadDemo", "MediaService\UploadDemo\UploadDemo.csproj", "{5748431B-D661-4040-819C-15B3C974AE8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingTaskDemo", "MediaService\EncodingTaskDemo\EncodingTaskDemo.csproj", "{66338DF9-39E1-484A-968C-0CB7BA29D13C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +89,14 @@ Global
 		{1E2AC74C-E50E-4CF7-9907-F970FA2E2943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E2AC74C-E50E-4CF7-9907-F970FA2E2943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E2AC74C-E50E-4CF7-9907-F970FA2E2943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5748431B-D661-4040-819C-15B3C974AE8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5748431B-D661-4040-819C-15B3C974AE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5748431B-D661-4040-819C-15B3C974AE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5748431B-D661-4040-819C-15B3C974AE8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66338DF9-39E1-484A-968C-0CB7BA29D13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66338DF9-39E1-484A-968C-0CB7BA29D13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66338DF9-39E1-484A-968C-0CB7BA29D13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66338DF9-39E1-484A-968C-0CB7BA29D13C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +112,7 @@ Global
 		{F055C91C-C955-46FA-A67A-8CE62DC98330} = {318225CE-5186-4326-8977-AA21C217411C}
 		{BCE8FE6F-F50A-4F05-9FB8-33DB607EAB0D} = {318225CE-5186-4326-8977-AA21C217411C}
 		{3D27139B-B082-4551-97FE-747B5E3A7ABC} = {318225CE-5186-4326-8977-AA21C217411C}
+		{5748431B-D661-4040-819C-15B3C974AE8A} = {CB2AB338-6CA0-4655-BAE4-06D88B914A13}
+		{66338DF9-39E1-484A-968C-0CB7BA29D13C} = {CB2AB338-6CA0-4655-BAE4-06D88B914A13}
 	EndGlobalSection
 EndGlobal
